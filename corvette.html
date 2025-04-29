@@ -8,7 +8,7 @@
     body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f9f9f9; color: #333; }
     header { background-color: #000; color: #fff; padding: 1rem; text-align: center; }
     .hero {
-      background-image: url('file:///C:/Users/cito1/Desktop/corvette.jpeg');
+      background-image: url('https://raw.githubusercontent.com/toskno17/rifasluxury2025/rifas/corvette.jpeg');
       background-size: cover;
       background-position: center;
       height: 300px;
@@ -84,7 +84,6 @@
   <div class="container">
     <div class="price-box">Participa por solo <strong>$250 MXN</strong> - ¡20,000 boletos disponibles!</div>
 
-    <!-- Boletos seleccionados y el botón de WhatsApp antes de los números disponibles -->
     <div class="selected-tickets" id="selected-tickets">
       <h3>Boletos seleccionados:</h3>
       <ul id="selected-tickets-list"></ul>
@@ -118,7 +117,6 @@
     const whatsappLink = document.getElementById('whatsapp-link');
     let selectedTickets = [];
 
-    // Agregar los boletos a la grilla
     for (let i = 1; i <= 20000; i++) {
       const div = document.createElement('div');
       div.className = 'ticket';
@@ -127,29 +125,21 @@
       grid.appendChild(div);
     }
 
-    // Función para seleccionar o deseleccionar boletos
     function toggleTicketSelection(ticketNumber, ticketElement) {
       const ticketIndex = selectedTickets.indexOf(ticketNumber);
 
       if (ticketIndex === -1) {
-        // Seleccionado
         selectedTickets.push(ticketNumber);
         const listItem = document.createElement('li');
         listItem.innerText = `Boleto #${ticketNumber}`;
         selectedTicketsList.appendChild(listItem);
-
-        // Cambiar color del boleto seleccionado
         ticketElement.classList.add('selected');
       } else {
-        // Deseleccionado
         selectedTickets.splice(ticketIndex, 1);
         selectedTicketsList.removeChild(selectedTicketsList.childNodes[ticketIndex]);
-
-        // Restablecer color del boleto
         ticketElement.classList.remove('selected');
       }
 
-      // Mostrar el botón de WhatsApp solo si hay boletos seleccionados
       if (selectedTickets.length > 0) {
         whatsappLink.style.display = 'block';
         const message = `Quiero los siguientes números para la rifa del Corvette C8: ${selectedTickets.join(', ')}`;
@@ -161,5 +151,6 @@
   </script>
 </body>
 </html>
+
 
 
